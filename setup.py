@@ -4,8 +4,8 @@ with open("README.md", "r", encoding="utf-8") as f:
     long_description = f.read()
 
 ## edit below variables as per your requirements -
-REPO_NAME = "dvc-nlp"   #https://github.com/Shyam-AI/dvc-nlp
-AUTHOR_USER_NAME = "Shyam-AI"
+# REPO_NAME = "dvc-nlp"   #https://github.com/Shyam-AI/dvc-nlp
+# AUTHOR_USER_NAME = "Shyam-AI"
 SRC_REPO = "src"
 LIST_OF_REQUIREMENTS = []
 
@@ -13,7 +13,7 @@ LIST_OF_REQUIREMENTS = []
 setup(
     name=SRC_REPO,
     version="0.0.1",
-    author=AUTHOR_USER_NAME,
+    author=Shyam-AI,
     description="A package for DVC NLP usecase",
     long_description=long_description,
     long_description_content_type="text/markdown",

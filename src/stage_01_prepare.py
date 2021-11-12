@@ -3,7 +3,8 @@ import os
 import shutil
 from tqdm import tqdm
 import logging
-from src.utils.common import read_yaml
+import random
+from src.utils.common import create_directory, read_yaml
 
 
 STAGE = "one"
@@ -18,6 +19,29 @@ logging.basicConfig(
 def main(config_path, params_path):
     config = read_yaml(config_path)
     params = read_yaml(params_path)
+
+    source_data = config["source_data"]
+    input_data = os.path.join(source_data["data_dir"],source_data["data_file"])
+
+    split = params["prepare"]["split"]
+    seed = params["prepare"]["seed"]
+    random.seed(seed)
+
+    artifacts = config["artifacts"]
+    prepared_data_dir_path = os.path.join(artifacts["ARTIFACTS_DIR"], artifacts["PREPARED_DATA"])
+    create_directory([prepared_data_dir_path])
+
+    train_data_pth = os.path.join(prepared_data_dir_path, artifacts["TRAINED_DATA"])
+    test_data_path = os.path.join(prepared_data_dir_path, artifacts["TEST_DATA"])
+
+    encode = "utf-8"
+
+    with open(input_data, encoding=encode) as fd_int:
+        with open(train_data_pth, "w", encoding=encode) as fd_out_train:
+            with open(test_data_path, "w", encoding=encode) as fd_out_test:
+                pass
+
+
 
 if __name__ == '__main__':
     args = argparse.ArgumentParser()

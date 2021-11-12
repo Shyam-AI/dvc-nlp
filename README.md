@@ -1,5 +1,5 @@
 # dvc-project-template
-DVC project template
+DVC NLP project
 
 ## STEPS -
 
@@ -30,5 +30,6 @@ pip install -r requirements.txt
 ```bash
 dvc init
 ```
+
 
 ### STEP 06- commit and push the changes to the remote repository

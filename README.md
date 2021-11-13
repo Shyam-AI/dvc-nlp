@@ -1,6 +1,12 @@
 # dvc-project-NLP
 DVC NLP project
 
+# DATASET :
+    Stack Overflow dataset
+
+# AIM :
+    to classify whether a given query is Python or not.
+
 [MY VIEW](https://studio.iterative.ai/user/Shyam-AI/views/dvc-nlp-xc2g3fmxjx)
 ## STEPS -
 

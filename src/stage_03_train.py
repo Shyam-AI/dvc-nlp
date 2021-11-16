@@ -28,6 +28,28 @@ def main(config_path, params_path):
 
     model_dir_path = os.path.join(artifacts["ARTIFACTS_DIR"], artifacts["MODEL_DIR"])
     create_directory([model_dir_path])
+
+    model_path = os.path.join(model_dir_path, artifacts["MODEL_NAME"])
+
+    matrix = joblib.load(featurized_train_data_path)
+
+    labels = np.squeeze(matrix[:, 1].toarray())
+    X = matrix[:,2:]
+
+    logging.info(f"input matrix size: {matrix.shape}")
+    logging.info(f"X matrix size: {X.shape}")
+    logging.info(f"Y matrix size or labels size: {labels.shape}")
+
+    seed = params["train"]["seed"]
+    n_est = params["train"]["n_est"]
+    min_split = params["train"]['min_split']
+
+    model = RandomForestClassifier(
+        n_estimators=n_est, min_samples_split=min_split, n_jobs=2, random_state=seed
+    )
+    model.fit(X, labels)
+
+    joblib.dump(model, model_path)
     
 
 

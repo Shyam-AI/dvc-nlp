@@ -2,7 +2,7 @@ import yaml
 import os 
 import logging
 import pandas as pd
-
+import json
 
 def read_yaml(path_to_yaml: str) -> dict:
     with open(path_to_yaml) as yaml_file:
@@ -29,3 +29,10 @@ def get_df(path_to_data: str, sep: str="\t") -> pd.DataFrame:
     )
     logging.info(f"The input data frame {path_to_data} size is {df.shape}\n")
     return df
+
+
+def save_json(path, data):
+    with open(path, "w") as f:
+        json.dump(data, f, indent=4)
+
+    logging.info(f"json file saved at: {path}")
